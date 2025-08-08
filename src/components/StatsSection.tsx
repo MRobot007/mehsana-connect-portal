@@ -9,36 +9,39 @@ import {
   Clock,
   Award
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const StatsSection = () => {
+  const { t } = useLanguage();
+  
   const statsData = [
     { 
-      label: "जनसंख्या", 
-      value: "3.5+ लाख", 
+      label: t('population'), 
+      value: t('populationValue'), 
       icon: Users,
       color: "from-blue-500 to-cyan-500",
-      description: "कुल निवासी"
+      description: t('totalResidents')
     },
     { 
-      label: "क्षेत्रफल", 
-      value: "80+ वर्ग किमी", 
+      label: t('area'), 
+      value: t('areaValue'), 
       icon: MapPin,
       color: "from-green-500 to-emerald-500",
-      description: "कुल क्षेत्र"
+      description: t('totalArea')
     },
     { 
-      label: "वार्ड", 
-      value: "13", 
+      label: t('wards'), 
+      value: t('wardsValue'), 
       icon: Building2,
       color: "from-purple-500 to-pink-500",
-      description: "प्रशासनिक वार्ड"
+      description: t('administrativeWards')
     },
     { 
-      label: "स्थापना", 
-      value: "1 जन 2025", 
+      label: t('established'), 
+      value: t('establishedValue'), 
       icon: Calendar,
       color: "from-orange-500 to-red-500",
-      description: "महानगरपालिका दर्जा"
+      description: t('corporationStatus')
     }
   ];
 

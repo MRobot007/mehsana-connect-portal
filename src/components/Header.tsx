@@ -1,20 +1,26 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone, Mail, MapPin, Globe } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import mehsanaLogo from "@/assets/mehsana-logo.png";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   const navigationItems = [
-    { label: "गृहपृष्ठ", href: "#home" },
-    { label: "महानगरपालिका के बारे में", href: "#about" },
-    { label: "ऑनलाइन सेवाएं", href: "#services" },
-    { label: "नागरिक सेवाएं", href: "#citizen-services" },
-    { label: "विभाग", href: "#departments" },
-    { label: "परियोजनाएं", href: "#projects" },
-    { label: "संपर्क", href: "#contact" },
+    { label: t('home'), href: "#home" },
+    { label: t('about'), href: "#about" },
+    { label: t('onlineServices'), href: "#services" },
+    { label: t('citizenServices'), href: "#citizen-services" },
+    { label: t('departments'), href: "#departments" },
+    { label: t('projects'), href: "#projects" },
+    { label: t('contact'), href: "#contact" },
   ];
+
+  const handleLanguageChange = (lang: 'hi' | 'en' | 'gu') => {
+    setLanguage(lang);
+  };
 
   return (
     <header className="bg-white shadow-lg sticky top-0 z-50">
@@ -25,7 +31,7 @@ const Header = () => {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span>हेल्पलाइन: +91-2762-XXXXXX</span>
+                <span>{t('helpline')}: +91-2762-XXXXXX</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
@@ -33,13 +39,28 @@ const Header = () => {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" className="text-white hover:text-government-blue hover:bg-white">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className={`text-white hover:text-government-blue hover:bg-white ${language === 'en' ? 'bg-white/20' : ''}`}
+                onClick={() => handleLanguageChange('en')}
+              >
                 English
               </Button>
-              <Button variant="ghost" size="sm" className="text-white hover:text-government-blue hover:bg-white">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className={`text-white hover:text-government-blue hover:bg-white ${language === 'hi' ? 'bg-white/20' : ''}`}
+                onClick={() => handleLanguageChange('hi')}
+              >
                 हिंदी
               </Button>
-              <Button variant="ghost" size="sm" className="text-white hover:text-government-blue hover:bg-white">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                className={`text-white hover:text-government-blue hover:bg-white ${language === 'gu' ? 'bg-white/20' : ''}`}
+                onClick={() => handleLanguageChange('gu')}
+              >
                 ગુજરાતી
               </Button>
             </div>
@@ -59,13 +80,13 @@ const Header = () => {
             />
             <div>
               <h1 className="text-2xl font-bold text-government-blue">
-                मेहसाणा महानगरपालिका
+                {t('corporationName')}
               </h1>
               <p className="text-sm text-muted-foreground">
-                Mehsana Municipal Corporation
+                {t('corporationNameEng')}
               </p>
               <p className="text-xs text-muted-foreground">
-                स्वच्छ, हरित, डिजिटल रूप से जुड़ा मेहसाणा
+                {t('tagline')}
               </p>
             </div>
           </div>

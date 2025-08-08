@@ -10,41 +10,44 @@ import {
   Phone,
   AlertCircle
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import mehsanaHero from "@/assets/mehsana-hero.jpg";
 
 const HeroSection = () => {
+  const { t } = useLanguage();
+  
   const quickServices = [
     {
       icon: CreditCard,
-      title: "प्रॉपर्टी टैक्स भुगतान",
-      description: "ऑनलाइन प्रॉपर्टी टैक्स भुगतान",
+      title: t('propertyTax'),
+      description: t('propertyTaxDesc'),
       href: "#property-tax"
     },
     {
       icon: FileText,
-      title: "जन्म/मृत्यु प्रमाणपत्र",
-      description: "जन्म और मृत्यु प्रमाणपत्र सेवाएं",
+      title: t('certificates'),
+      description: t('certificatesDesc'),
       href: "#certificates"
     },
     {
       icon: Building2,
-      title: "बिल्डिंग परमिशन",
-      description: "निर्माण अनुमति आवेदन",
+      title: t('buildingPermission'),
+      description: t('buildingPermissionDesc'),
       href: "#building-permission"
     },
     {
       icon: Phone,
-      title: "शिकायत पोर्टल",
-      description: "ऑनलाइन शिकायत दर्ज करें",
+      title: t('complaintPortal'),
+      description: t('complaintPortalDesc'),
       href: "#complaints"
     }
   ];
 
   const statsData = [
-    { label: "जनसंख्या", value: "3.5+ लाख", icon: Users },
-    { label: "क्षेत्रफल", value: "80+ वर्ग किमी", icon: MapPin },
-    { label: "वार्ड", value: "13", icon: Building2 },
-    { label: "स्थापना", value: "1 जन 2025", icon: Calendar }
+    { label: t('population'), value: t('populationValue'), icon: Users },
+    { label: t('area'), value: t('areaValue'), icon: MapPin },
+    { label: t('wards'), value: t('wardsValue'), icon: Building2 },
+    { label: t('established'), value: t('establishedValue'), icon: Calendar }
   ];
 
   return (
@@ -64,33 +67,32 @@ const HeroSection = () => {
           <div className="max-w-3xl text-white">
             <div className="mb-4">
               <span className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium">
-                1 जनवरी 2025 से महानगरपालिका
+                {t('corporationSince')}
               </span>
             </div>
             <h1 className="text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              मेहसाणा 
-              <span className="block text-government-orange">महानगरपालिका</span>
+              {t('welcomeTitle').split(' ')[0]} 
+              <span className="block text-government-orange">{t('welcomeTitle').split(' ')[1]}</span>
             </h1>
             <p className="text-xl lg:text-2xl mb-8 leading-relaxed opacity-95">
-              स्वच्छ, हरित, डिजिटल रूप से जुड़ा मेहसाणा के साथ समावेशी विकास। 
-              पारदर्शी शासन, आधुनिक अवसंरचना और कुशल नागरिक सेवाएं।
+              {t('heroDescription')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="hero" size="lg" className="text-lg px-8 py-4 font-semibold shadow-2xl">
-                ऑनलाइन सेवाएं
+                {t('onlineServicesBtn')}
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8 py-4 border-2 border-white text-white hover:bg-white hover:text-government-blue font-semibold">
-                महानगरपालिका के बारे में
+                {t('aboutCorporationBtn')}
               </Button>
             </div>
             <div className="mt-8 flex items-center space-x-6 text-sm">
               <div className="flex items-center space-x-2">
                 <span className="h-2 w-2 bg-green-400 rounded-full animate-pulse"></span>
-                <span>24/7 ऑनलाइन सेवाएं</span>
+                <span>{t('onlineServices24x7')}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4" />
-                <span>आपातकाल: 100 | 101 | 108</span>
+                <span>{t('emergency')}</span>
               </div>
             </div>
           </div>
@@ -109,9 +111,9 @@ const HeroSection = () => {
       {/* Quick Services */}
       <div className="container mx-auto px-4 -mt-24 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-government-blue mb-4">तुरंत सेवाएं</h2>
+          <h2 className="text-3xl font-bold text-government-blue mb-4">{t('quickServices')}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            डिजिटल मेहसाणा की सुविधा से घर बैठे सभी नागरिक सेवाओं का लाभ उठाएं
+            {t('quickServicesDesc')}
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
