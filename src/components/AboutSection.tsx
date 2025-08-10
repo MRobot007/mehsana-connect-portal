@@ -10,45 +10,48 @@ import {
   Crown,
   FileText
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const AboutSection = () => {
+  const { t } = useLanguage();
+
   const milestones = [
     {
       year: "2025",
-      title: "महानगरपालिका में उन्नयन",
+      title: t('about.title'),
       description: "1 जनवरी 2025 को नगरपालिका से महानगरपालिका में उन्नयन"
     },
     {
-      year: "2025",
+      year: "2025", 
       title: "9 ग्राम पंचायतों का विलय",
       description: "फतेपुरा, रामोसाना, देदियासन और अन्य का विलय"
     },
     {
       year: "2025",
-      title: "13 वार्ड निर्माण",
+      title: "13 वार्ड निर्माण", 
       description: "52 पार्षद सीटों के साथ प्रशासनिक संरचना"
     }
   ];
 
   const organizationalStructure = [
     {
-      title: "आयुक्त",
-      description: "मुख्य कार्यकारी अधिकारी, प्रशासन के लिए जिम्मेदार",
+      title: t('about.commissioner'),
+      description: t('about.commissionerDesc'),
       icon: Crown
     },
     {
-      title: "मेयर",
-      description: "राजनीतिक प्रमुख (आगामी चुनावों में चुने जाने वाले)",
+      title: t('about.mayor'),
+      description: t('about.mayorDesc'),
       icon: Users
     },
     {
-      title: "स्थायी समितियां",
-      description: "स्वास्थ्य, वित्त, निर्माण कार्य आदि",
+      title: t('about.standingCommittees'),
+      description: t('about.standingCommitteesDesc'),
       icon: Building2
     },
     {
-      title: "वार्ड पार्षद",
-      description: "13 वार्डों के निर्वाचित प्रतिनिधि",
+      title: t('about.wardCouncillors'),
+      description: t('about.wardCouncillorsDesc'),
       icon: MapPin
     }
   ];
@@ -59,10 +62,10 @@ const AboutSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-government-blue mb-4">
-            महानगरपालिका के बारे में
+            {t('about.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            मेहसाणा महानगरपालिका गुजरात नगरपालिका निगम अधिनियम, 1949 के तहत स्थापित
+            {t('about.subtitle')}
           </p>
         </div>
 
@@ -72,12 +75,12 @@ const AboutSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 <Eye className="h-8 w-8" />
-                <span className="text-2xl">हमारा विजन</span>
+                <span className="text-2xl">{t('about.vision')}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg leading-relaxed">
-                "समावेशी विकास के साथ एक स्वच्छ, हरित, डिजिटल रूप से जुड़ा मेहसाणा।"
+                {t('about.visionText')}
               </p>
             </CardContent>
           </Card>
@@ -86,12 +89,12 @@ const AboutSection = () => {
             <CardHeader>
               <CardTitle className="flex items-center space-x-3">
                 <Target className="h-8 w-8" />
-                <span className="text-2xl">हमारा मिशन</span>
+                <span className="text-2xl">{t('about.mission')}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-lg leading-relaxed">
-                "पारदर्शी शासन, आधुनिक अवसंरचना और कुशल नागरिक सेवाएं प्रदान करना।"
+                {t('about.missionText')}
               </p>
             </CardContent>
           </Card>
@@ -102,16 +105,16 @@ const AboutSection = () => {
           <Card>
             <CardContent className="p-6 text-center">
               <MapPin className="h-12 w-12 text-government-blue mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-government-blue mb-2">80+ km²</h3>
-              <p className="text-muted-foreground">कुल क्षेत्रफल</p>
+              <h3 className="text-2xl font-bold text-government-blue mb-2">{t('stats.areaValue')}</h3>
+              <p className="text-muted-foreground">{t('about.totalArea')}</p>
             </CardContent>
           </Card>
           
           <Card>
             <CardContent className="p-6 text-center">
               <Building2 className="h-12 w-12 text-government-orange mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-government-orange mb-2">13</h3>
-              <p className="text-muted-foreground">वार्ड</p>
+              <h3 className="text-2xl font-bold text-government-orange mb-2">{t('stats.wardsValue')}</h3>
+              <p className="text-muted-foreground">{t('stats.wards')}</p>
             </CardContent>
           </Card>
           
@@ -119,15 +122,15 @@ const AboutSection = () => {
             <CardContent className="p-6 text-center">
               <Users className="h-12 w-12 text-government-green mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-government-green mb-2">52</h3>
-              <p className="text-muted-foreground">पार्षद सीटें</p>
+              <p className="text-muted-foreground">{t('about.councilSeats')}</p>
             </CardContent>
           </Card>
           
           <Card>
             <CardContent className="p-6 text-center">
               <Calendar className="h-12 w-12 text-government-blue mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-government-blue mb-2">1 जन 2025</h3>
-              <p className="text-muted-foreground">स्थापना दिवस</p>
+              <h3 className="text-2xl font-bold text-government-blue mb-2">{t('stats.establishmentValue')}</h3>
+              <p className="text-muted-foreground">{t('about.establishmentDate')}</p>
             </CardContent>
           </Card>
         </div>
@@ -135,7 +138,7 @@ const AboutSection = () => {
         {/* Organizational Structure */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-government-blue mb-8 text-center">
-            संगठनात्मक संरचना
+            {t('about.organizationalStructure')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {organizationalStructure.map((item, index) => (
@@ -157,7 +160,7 @@ const AboutSection = () => {
         {/* Timeline */}
         <div className="mb-16">
           <h3 className="text-3xl font-bold text-government-blue mb-8 text-center">
-            मुख्य घटनाएं
+            {t('about.keyEvents')}
           </h3>
           <div className="space-y-6">
             {milestones.map((milestone, index) => (
@@ -186,18 +189,18 @@ const AboutSection = () => {
         <Card className="bg-government-light-blue">
           <CardContent className="p-8 text-center">
             <h3 className="text-2xl font-bold text-government-blue mb-4">
-              मुख्यालय पता
+              {t('about.headquarters')}
             </h3>
             <p className="text-lg mb-4">
-              मेहसाणा महानगरपालिका कार्यालय, मेहसाणा, गुजरात - 384001
+              {t('about.headquartersAddress')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="default">
-                संपर्क विवरण देखें
+                {t('about.viewContact')}
               </Button>
               <Button variant="outline">
                 <MapPin className="h-4 w-4 mr-2" />
-                मानचित्र में देखें
+                {t('about.viewMap')}
               </Button>
             </div>
           </CardContent>

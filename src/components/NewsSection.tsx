@@ -2,8 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, ArrowRight, Bell, FileText, Megaphone } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const NewsSection = () => {
+  const { t } = useLanguage();
+
   const news = [
     {
       id: 1,
@@ -99,10 +102,10 @@ const NewsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-government-blue mb-4">
-            समाचार और घोषणाएं
+            {t('news.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            महानगरपालिका की नवीनतम घटनाएं, परियोजनाएं और महत्वपूर्ण सूचनाएं
+            {t('news.subtitle')}
           </p>
         </div>
 
@@ -111,7 +114,7 @@ const NewsSection = () => {
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold text-government-blue mb-6 flex items-center">
               <FileText className="h-6 w-6 mr-2" />
-              ताजा समाचार
+              {t('news.latestNews')}
             </h3>
             <div className="space-y-6">
               {news.map((item) => (
@@ -138,7 +141,7 @@ const NewsSection = () => {
                       {item.description}
                     </p>
                     <Button variant="ghost" className="text-government-blue p-0 h-auto">
-                      विस्तार से पढ़ें
+                      {t('news.readMore')}
                       <ArrowRight className="h-4 w-4 ml-1" />
                     </Button>
                   </CardContent>
@@ -147,7 +150,7 @@ const NewsSection = () => {
             </div>
             <div className="text-center mt-8">
               <Button variant="outline" size="lg">
-                सभी समाचार देखें
+                {t('news.viewAllNews')}
               </Button>
             </div>
           </div>
@@ -159,7 +162,7 @@ const NewsSection = () => {
               <CardHeader>
                 <CardTitle className="flex items-center text-government-blue">
                   <Megaphone className="h-5 w-5 mr-2" />
-                  महत्वपूर्ण घोषणाएं
+                  {t('news.importantAnnouncements')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -188,7 +191,7 @@ const NewsSection = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="text-government-blue">
-                  त्वरित लिंक
+                  {t('news.quickLinks')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
@@ -214,13 +217,13 @@ const NewsSection = () => {
             <Card className="bg-government-light-blue">
               <CardContent className="p-6 text-center">
                 <h4 className="font-semibold text-government-blue mb-2">
-                  सहायता चाहिए?
+                  {t('news.needHelp')}
                 </h4>
                 <p className="text-sm text-muted-foreground mb-4">
-                  हमारी टीम आपकी सहायता के लिए तैयार है
+                  {t('news.needHelpDesc')}
                 </p>
                 <Button variant="default" size="sm" className="w-full">
-                  अभी संपर्क करें
+                  {t('news.contactNow')}
                 </Button>
               </CardContent>
             </Card>

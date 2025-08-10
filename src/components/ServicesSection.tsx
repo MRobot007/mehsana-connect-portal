@@ -18,63 +18,66 @@ import {
   Search,
   Megaphone
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const onlineServices = [
     {
       icon: CreditCard,
-      title: "प्रॉपर्टी टैक्स भुगतान",
-      description: "ऑनलाइन प्रॉपर्टी टैक्स भुगतान और नई कनेक्शन",
-      status: "उपलब्ध",
+      title: t('trending.propertyTax'),
+      description: t('trending.propertyTaxDesc'),
+      status: t('services.available'),
       category: "वित्त"
     },
     {
       icon: Droplets,
-      title: "पानी टैक्स भुगतान",
-      description: "पानी टैक्स भुगतान और नए कनेक्शन के लिए आवेदन",
-      status: "उपलब्ध",
+      title: t('trending.waterTax'),
+      description: t('trending.waterTaxDesc'),
+      status: t('services.available'),
       category: "जल आपूर्ति"
     },
     {
       icon: FileText,
-      title: "जन्म/मृत्यु प्रमाणपत्र",
-      description: "जन्म और मृत्यु प्रमाणपत्र के लिए ऑनलाइन आवेदन",
-      status: "उपलब्ध",
+      title: t('trending.birthCertificate'),
+      description: t('trending.birthCertificateDesc'),
+      status: t('services.available'),
       category: "प्रमाणपत्र"
     },
     {
       icon: Building2,
-      title: "बिल्डिंग प्लान अप्रूवल",
-      description: "निर्माण योजना की स्वीकृति के लिए आवेदन",
-      status: "उपलब्ध",
+      title: t('trending.buildingPermission'),
+      description: t('trending.buildingPermissionDesc'),
+      status: t('services.available'),
       category: "नगर नियोजन"
     },
     {
       icon: Users,
       title: "दुकान एवं स्थापना पंजीकरण",
       description: "व्यापारिक प्रतिष्ठानों का पंजीकरण",
-      status: "शीघ्र",
+      status: t('services.comingSoon'),
       category: "व्यापार"
     },
     {
       icon: Heart,
       title: "विवाह पंजीकरण",
       description: "विवाह प्रमाणपत्र के लिए ऑनलाइन आवेदन",
-      status: "शीघ्र",
+      status: t('services.comingSoon'),
       category: "प्रमाणपत्र"
     },
     {
       icon: Search,
       title: "RTI आवेदन",
       description: "सूचना का अधिकार आवेदन और ट्रैकिंग",
-      status: "उपलब्ध",
+      status: t('services.available'),
       category: "पारदर्शिता"
     },
     {
       icon: Shield,
       title: "फायर सेफ्टी सर्टिफिकेट",
       description: "अग्नि सुरक्षा प्रमाणपत्र के लिए आवेदन",
-      status: "शीघ्र",
+      status: t('services.comingSoon'),
       category: "सुरक्षा"
     }
   ];
@@ -138,17 +141,17 @@ const ServicesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-government-blue mb-4">
-            ऑनलाइन सेवाएं
+            {t('services.title')}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            डिजिटल इंडिया के तहत नागरिकों को सुविधाजनक और पारदर्शी सेवाएं प्रदान करना
+            {t('services.subtitle')}
           </p>
         </div>
 
         {/* Online Services Grid */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-government-blue mb-8">
-            मुख्य ऑनलाइन सेवाएं
+            {t('services.mainServices')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {onlineServices.map((service, index) => (
@@ -160,7 +163,7 @@ const ServicesSection = () => {
                     </div>
                     <span 
                       className={`text-xs px-2 py-1 rounded-full ${
-                        service.status === 'उपलब्ध' 
+                        service.status === t('services.available')
                           ? 'bg-green-100 text-green-800' 
                           : 'bg-yellow-100 text-yellow-800'
                       }`}
@@ -185,7 +188,7 @@ const ServicesSection = () => {
           </div>
           <div className="text-center mt-8">
             <Button variant="hero" size="lg">
-              सभी ऑनलाइन सेवाएं देखें
+              {t('services.viewAllServices')}
             </Button>
           </div>
         </div>
@@ -195,10 +198,10 @@ const ServicesSection = () => {
           <CardContent className="p-8 text-center">
             <Phone className="h-16 w-16 mx-auto mb-4 opacity-90" />
             <h3 className="text-2xl font-bold mb-4">
-              नागरिक सहायता हेल्पलाइन
+              {t('services.helpline')}
             </h3>
             <p className="text-lg mb-6">
-              सभी नागरिक सेवाओं के लिए हमारी 24/7 हेल्पलाइन पर संपर्क करें
+              {t('services.helplineDesc')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="outline" className="border-white text-white hover:bg-white hover:text-government-orange">
@@ -214,7 +217,7 @@ const ServicesSection = () => {
         {/* Departments */}
         <div>
           <h3 className="text-2xl font-bold text-government-blue mb-8 text-center">
-            विभाग और सेवाएं
+            {t('services.departments')}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {departments.map((dept, index) => (
@@ -245,13 +248,13 @@ const ServicesSection = () => {
             <CardContent className="p-8">
               <Megaphone className="h-12 w-12 text-government-blue mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-government-blue mb-4">
-                नई सेवाओं की घोषणा
+                {t('services.newServicesAnnouncement')}
               </h3>
               <p className="text-lg text-muted-foreground mb-6">
-                हम निरंतर नई डिजिटल सेवाएं जोड़ रहे हैं। अपडेट के लिए जुड़े रहें।
+                {t('services.newServicesDesc')}
               </p>
               <Button variant="default" size="lg">
-                न्यूज़लेटर सब्सक्राइब करें
+                {t('services.subscribeNewsletter')}
               </Button>
             </CardContent>
           </Card>

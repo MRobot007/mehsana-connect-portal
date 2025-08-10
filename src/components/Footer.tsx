@@ -11,21 +11,24 @@ import {
   ExternalLink
 } from "lucide-react";
 import mehsanaLogo from "@/assets/mehsana-logo.png";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
+
   const quickLinks = [
-    { label: "महानगरपालिका के बारे में", href: "#about" },
-    { label: "ऑनलाइन सेवाएं", href: "#services" },
-    { label: "नागरिक सेवाएं", href: "#citizen-services" },
+    { label: t('about.title'), href: "#about" },
+    { label: t('services.title'), href: "#services" },
+    { label: t('footer.citizenServices'), href: "#citizen-services" },
     { label: "विभाग", href: "#departments" },
     { label: "परियोजनाएं", href: "#projects" },
-    { label: "संपर्क", href: "#contact" }
+    { label: t('header.contact'), href: "#contact" }
   ];
 
   const citizenServices = [
-    { label: "प्रॉपर्टी टैक्स भुगतान", href: "#property-tax" },
-    { label: "जन्म/मृत्यु प्रमाणपत्र", href: "#certificates" },
-    { label: "बिल्डिंग परमिशन", href: "#building-permission" },
+    { label: t('trending.propertyTax'), href: "#property-tax" },
+    { label: t('trending.birthCertificate'), href: "#certificates" },
+    { label: t('trending.buildingPermission'), href: "#building-permission" },
     { label: "RTI आवेदन", href: "#rti" },
     { label: "शिकायत पोर्टल", href: "#complaints" },
     { label: "ट्रेड लाइसेंस", href: "#trade-license" }
@@ -53,13 +56,12 @@ const Footer = () => {
                 className="h-12 w-12"
               />
               <div>
-                <h3 className="text-lg font-bold">मेहसाणा महानगरपालिका</h3>
-                <p className="text-sm opacity-90">Mehsana Municipal Corporation</p>
+                <h3 className="text-lg font-bold">{t('header.title')}</h3>
+                <p className="text-sm opacity-90">{t('header.subtitle')}</p>
               </div>
             </div>
             <p className="text-sm opacity-90 leading-relaxed">
-              स्वच्छ, हरित, डिजिटल रूप से जुड़ा मेहसाणा के साथ समावेशी विकास। 
-              पारदर्शी शासन और कुशल नागरिक सेवाएं।
+              {t('footer.tagline')}
             </p>
             <div className="flex space-x-3">
               <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
@@ -79,7 +81,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">त्वरित लिंक</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
@@ -96,7 +98,7 @@ const Footer = () => {
 
           {/* Citizen Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">नागरिक सेवाएं</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.citizenServices')}</h4>
             <ul className="space-y-2">
               {citizenServices.map((service, index) => (
                 <li key={index}>
@@ -113,13 +115,12 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">संपर्क जानकारी</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.contactInfo')}</h4>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
                 <div className="text-sm opacity-90">
-                  <p>मेहसाणा महानगरपालिका कार्यालय</p>
-                  <p>मेहसाणा, गुजरात - 384001</p>
+                  <p>{t('about.headquartersAddress')}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-3">
@@ -133,8 +134,7 @@ const Footer = () => {
               <div className="flex items-start space-x-3">
                 <Clock className="h-4 w-4 mt-1" />
                 <div className="text-sm opacity-90">
-                  <p>सोमवार - शुक्रवार: 10:00 AM - 6:00 PM</p>
-                  <p>शनिवार: 10:00 AM - 2:00 PM</p>
+                  <p>{t('footer.workingHours')}</p>
                 </div>
               </div>
             </div>
@@ -143,7 +143,7 @@ const Footer = () => {
 
         {/* Important Government Links */}
         <div className="border-t border-white/20 pt-8 mb-8">
-          <h4 className="text-lg font-semibold mb-4">महत्वपूर्ण लिंक</h4>
+          <h4 className="text-lg font-semibold mb-4">{t('footer.importantLinks')}</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {importantLinks.map((link, index) => (
               <a
@@ -162,19 +162,19 @@ const Footer = () => {
 
         {/* Emergency Numbers */}
         <div className="bg-red-600 rounded-lg p-4 mb-8">
-          <h4 className="text-lg font-semibold mb-3">आपातकालीन नंबर</h4>
+          <h4 className="text-lg font-semibold mb-3">{t('footer.emergencyNumbers')}</h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
             <div>
-              <strong>आग ब्रिगेड:</strong> 101
+              <strong>{t('footer.fireBrigade')}</strong> 101
             </div>
             <div>
-              <strong>पुलिस:</strong> 100
+              <strong>{t('footer.police')}</strong> 100
             </div>
             <div>
-              <strong>एम्बुलेंस:</strong> 108
+              <strong>{t('footer.ambulance')}</strong> 108
             </div>
             <div>
-              <strong>आपदा हेल्पलाइन:</strong> 1070
+              <strong>{t('footer.disasterHelpline')}</strong> 1070
             </div>
           </div>
         </div>
@@ -183,20 +183,20 @@ const Footer = () => {
         <div className="border-t border-white/20 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm opacity-90">
-              © 2025 मेहसाणा महानगरपालिका। सभी अधिकार सुरक्षित।
+              {t('footer.copyright')}
             </div>
             <div className="flex space-x-6 text-sm">
               <a href="#privacy" className="opacity-90 hover:opacity-100 transition-opacity hover:underline">
-                गोपनीयता नीति
+                {t('footer.privacyPolicy')}
               </a>
               <a href="#terms" className="opacity-90 hover:opacity-100 transition-opacity hover:underline">
-                उपयोग की शर्तें
+                {t('footer.terms')}
               </a>
               <a href="#accessibility" className="opacity-90 hover:opacity-100 transition-opacity hover:underline">
-                पहुंच नीति
+                {t('footer.accessibility')}
               </a>
               <a href="#sitemap" className="opacity-90 hover:opacity-100 transition-opacity hover:underline">
-                साइट मैप
+                {t('footer.sitemap')}
               </a>
             </div>
           </div>
