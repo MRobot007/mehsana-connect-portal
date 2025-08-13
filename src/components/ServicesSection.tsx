@@ -19,9 +19,23 @@ import {
   Megaphone
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import ServiceModal from "./ServiceModal";
+import { useState } from "react";
 
 const ServicesSection = () => {
   const { t } = useLanguage();
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openServiceModal = (service: any) => {
+    setSelectedService(service);
+    setIsModalOpen(true);
+  };
+
+  const closeServiceModal = () => {
+    setSelectedService(null);
+    setIsModalOpen(false);
+  };
 
   const onlineServices = [
     {
@@ -155,7 +169,11 @@ const ServicesSection = () => {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {onlineServices.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group">
+              <Card 
+                key={index} 
+                className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer group"
+                onClick={() => openServiceModal(service)}
+              >
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between">
                     <div className="bg-government-light-blue p-3 rounded-full group-hover:bg-government-blue transition-colors">
@@ -259,6 +277,12 @@ const ServicesSection = () => {
             </CardContent>
           </Card>
         </div>
+        
+        <ServiceModal 
+          isOpen={isModalOpen}
+          onClose={closeServiceModal}
+          service={selectedService}
+        />
       </div>
     </section>
   );
